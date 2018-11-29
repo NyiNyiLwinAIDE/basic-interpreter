@@ -51,7 +51,7 @@ public class ValueImple implements Value {
 	@Override
 	public ValueType getType() {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return type;
 	}
 
 }

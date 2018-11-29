@@ -71,14 +71,10 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 			c = (char) ci;
 		}
 		reader.unread(ci);
-		System.out.println(c);
-
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-			System.out.println("stirng");
 			return getString();
-
 		} else if (Character.isDigit(c)) {
-			return getInteger();
+			return getNumber();
 
 		} else if (c == '"') {
 			return getLiteral();
@@ -92,7 +88,6 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 			int ci = reader.read();
 			if(ci < 0) break;
 			char c = (char) ci;
-			System.out.println(c);
 			if((c >= 'a' && c <= 'z') ||
 				(c >= 'A' && c <= 'Z') ||
 				(c >= '0' && c <= '9')){
@@ -109,18 +104,28 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 				new ValueImple(target, ValueType.STRING));
 	}
 	
-	private LexicalUnit getInteger() throws Exception {
+	private LexicalUnit getNumber() throws Exception {
 		String target ="";
+		boolean flg = false;
 		while(true) {
 			int ci = reader.read();
 			if(ci < 0) break;
 			char c = (char) ci;
-			if(c >= 0 && c <= 9){
+			if(c >= '0' && c <= '9'){
 				target += c;
+				continue;
+			}
+			if((ci > 0) && (c == '.') && !flg) {
+				target += c;
+				flg = true;
 				continue;
 			}
 			reader.unread(ci);
 			break;
+		}
+		if(flg) {
+			return new LexicalUnit(LexicalType.DOUBLEVAL, 
+					new ValueImple(target, ValueType.DOUBLE));
 		}
 		return new LexicalUnit(LexicalType.INTVAL, 
 				new ValueImple(target, ValueType.INTEGER));
@@ -128,15 +133,15 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 	
 	private LexicalUnit getLiteral() throws Exception {
 		String target ="";
+		int ci = reader.read();
 		while(true) {
-			int ci = reader.read();
+			ci = reader.read();
 			if(ci < 0) break;
 			char c = (char) ci;
 			if(c != '"'){
 				target += c;
 				continue;
 			}
-			reader.unread(ci);
 			break;
 		}
 		return new LexicalUnit(LexicalType.LITERAL, 
@@ -145,9 +150,31 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 	private LexicalUnit getSymbol() throws Exception {
 		int ci = reader.read();
 		char c = (char) ci;
+		String s = (String.valueOf(c));
 		
-		if(map.containsKey(c)) {
-			return map.get(c);
+		if(c == '<') {
+			ci = reader.read();
+			if((char)ci == '=') {
+				s += (char)ci;
+			}else if((char)ci == '>'){
+				s += (char)ci;
+			}
+		}else if(c == '>') {
+			ci = reader.read();
+			if((char)ci == '=') {
+				s += (char)ci;
+			}
+		}else if(c == '=') {
+			ci = reader.read();
+			if((char)ci == '>') {
+				s += (char)ci;
+			}else if((char)ci == '<') {
+				s += (char)ci;
+			}
+		}
+		
+		if(map.containsKey(s)) {
+			return map.get(s);
 		}else {
 			return null;
 		}

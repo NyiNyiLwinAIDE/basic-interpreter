@@ -30,9 +30,9 @@ public class LexicalUnit {
 	    case NAME:
 	    	return "NAME:\t" + value.getSValue();
 	    case DOUBLEVAL:
-	    	return "DOUBLEVAL:\t" + value.getSValue();
+	    	return "DOUBLEVAL:\t" + value.getDValue();
 	    case INTVAL:
-	    	return "INTVAL:\t" + value.getSValue();
+	    	return "INTVAL:\t" + value.getIValue();
 	    case IF:
             return ("IF");
 	    case THEN:
