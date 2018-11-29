@@ -58,7 +58,13 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 
 	@Override
 	public LexicalUnit get() throws Exception {
+		if(!reader.ready()) {
+			return new LexicalUnit(LexicalType.EOF);
+		}
 		int ci = reader.read();
+		if (ci < 0) {
+			return new LexicalUnit(LexicalType.EOF);
+		}
 		char c = (char) ci;
 		while(c == ' ' || c == '\t') {
 			ci = reader.read();
@@ -67,11 +73,8 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 		reader.unread(ci);
 		System.out.println(c);
 
-		if (ci < 0) {
-			return new LexicalUnit(LexicalType.EOF);
-		}
-
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+			System.out.println("stirng");
 			return getString();
 
 		} else if (Character.isDigit(c)) {
@@ -80,8 +83,7 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 		} else if (c == '"') {
 			return getLiteral();
 		}
-		return new LexicalUnit(LexicalType.NAME,
-				new ValueImple("error", ValueType.STRING));
+		else return getSymbol();
 	}
 	
 	private LexicalUnit getString() throws Exception {
@@ -90,14 +92,18 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 			int ci = reader.read();
 			if(ci < 0) break;
 			char c = (char) ci;
+			System.out.println(c);
 			if((c >= 'a' && c <= 'z') ||
 				(c >= 'A' && c <= 'Z') ||
-				(c >= 0 && c <= 9)){
+				(c >= '0' && c <= '9')){
 				target += c;
 				continue;
 			}
 			reader.unread(ci);
 			break;
+		}
+		if(map.containsKey(target)) {
+			return map.get(target);
 		}
 		return new LexicalUnit(LexicalType.NAME,
 				new ValueImple(target, ValueType.STRING));
@@ -135,6 +141,16 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 		}
 		return new LexicalUnit(LexicalType.LITERAL, 
 				new ValueImple(target, ValueType.STRING));
+	}
+	private LexicalUnit getSymbol() throws Exception {
+		int ci = reader.read();
+		char c = (char) ci;
+		
+		if(map.containsKey(c)) {
+			return map.get(c);
+		}else {
+			return null;
+		}
 	}
 
 	@Override
