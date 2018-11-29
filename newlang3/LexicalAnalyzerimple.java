@@ -58,34 +58,32 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 
 	@Override
 	public LexicalUnit get() throws Exception {
-		
-		while(true) {
-			int ci = reader.read();
-			char c = (char) ci;
-			System.out.println(c);
-			
-			if(c == ' ' || c == '\t') {
-				continue;
-			}
-			if(ci < 0) {
-				return new LexicalUnit(LexicalType.EOF);
-			}
-			
-			if((c >= 'a' && c <= 'z') ||
-					(c >= 'A' && c <= 'Z')){
-				reader.unread(ci);
-				return getString();
-				
-			}else if(Character.isDigit(c)){
-				reader.unread(ci);
-				return getInteger();
-				
-			}else if(c == '"'){
-				reader.unread(ci);
-				return getLiteral();
-			}
+		int ci = reader.read();
+		char c = (char) ci;
+		while(c == ' ' || c == '\t') {
+			ci = reader.read();
+			c = (char) ci;
 		}
+		reader.unread(ci);
+		System.out.println(c);
+
+		if (ci < 0) {
+			return new LexicalUnit(LexicalType.EOF);
+		}
+
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+			return getString();
+
+		} else if (Character.isDigit(c)) {
+			return getInteger();
+
+		} else if (c == '"') {
+			return getLiteral();
+		}
+		return new LexicalUnit(LexicalType.NAME,
+				new ValueImple("error", ValueType.STRING));
 	}
+	
 	private LexicalUnit getString() throws Exception {
 		String target ="";
 		while(true) {
