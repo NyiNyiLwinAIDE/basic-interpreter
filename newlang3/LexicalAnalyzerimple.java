@@ -4,13 +4,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PushbackReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
 
+
+
 public class LexicalAnalyzerimple implements LexicalAnalyzer {
+	//PushbackReaderの宣言とMapの宣言と初期化
 	PushbackReader reader;
 	static Map<String,LexicalUnit> map = new HashMap<>();
+	List<LexicalUnit> units = new ArrayList<>();
 	
 	public LexicalAnalyzerimple(InputStream in) {
 		Reader r =  new InputStreamReader(in);
@@ -58,6 +64,13 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 
 	@Override
 	public LexicalUnit get() throws Exception {
+		if(!units.isEmpty()) {
+			int index = units.size() - 1;
+			LexicalUnit tmp = units.get(index);
+			units.remove(index);
+			return tmp;
+		}
+		
 		if(!reader.ready()) {
 			return new LexicalUnit(LexicalType.EOF);
 		}
@@ -188,8 +201,23 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 
 	@Override
 	public void unget(LexicalUnit token) throws Exception {
-		// TODO 自動生成されたメソッド・スタブ
+		units.add(token);
 		
+	}
+	
+	public LexicalUnit peek(int n) throws Exception{
+		List<LexicalUnit> tmp = new ArrayList<>();
+		for(int i=0; i <= n-1; i++) {
+			tmp.add(get());
+		}
+		LexicalUnit lu = get();
+		tmp.add(lu);
+	
+		for(int i=tmp.size()-1; i > 0; i--) {
+			unget(tmp.get(i));
+		}
+		
+		return lu;
 	}
 
 }
