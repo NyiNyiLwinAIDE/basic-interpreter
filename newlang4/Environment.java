@@ -1,5 +1,6 @@
 package newlang4;
 
+import newlang3.*;
 import java.util.Hashtable;
 
 public class Environment {

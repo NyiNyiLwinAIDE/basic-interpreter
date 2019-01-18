@@ -1,5 +1,7 @@
 package newlang4;
 
+import newlang3.*;
+
 public class Node {
     NodeType type;
     Environment env;

@@ -27,7 +27,7 @@ public class main {
 		
 		LexicalAnalyzer la = new LexicalAnalyzerimple(is);
 		Environment env = new Environment(la);
-		Node program = Program.getHandler(env);
+		Node program = ProgramNode.getHandler(env);
 		program.parse();
 		System.out.println(program.toString());
 	}
