@@ -29,7 +29,7 @@ public class ProgramNode extends Node {
 		return StmtListNode.getHandler(env);
 	}
 	
-	public void parse() {
+	public void parse() throws Exception{
 		env.getInput().get();
 	}
 	

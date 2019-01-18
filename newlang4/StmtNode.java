@@ -25,7 +25,7 @@ public class StmtNode extends Node {
 	}
 	
 	// 次に出てくる字句をparseできるnodeをひとつ返す
-	public static Node getHandler(Environment env) {
+	public static Node getHandler(Environment env) throws Exception {
 		switch (env.getInput().peek(1).getType()) {
 			case NAME:
 				

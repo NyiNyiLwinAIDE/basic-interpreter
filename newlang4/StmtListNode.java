@@ -33,8 +33,8 @@ public class StmtListNode extends Node {
 		return new StmtListNode(env);
 	}
 	
-	public void parse() {
-		LexicalUnit lu = env.getInput().peek(1).getType();
+	public void parse() throws Exception{
+		LexicalUnit lu = env.getInput().peek(1);
 		Node handler = null;
 		
 		// stmtがfirst集合に含まれるとき

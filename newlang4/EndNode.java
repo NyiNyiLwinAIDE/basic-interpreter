@@ -24,7 +24,7 @@ public class EndNode extends Node {
 		return new EndNode(env);
 	}
 	
-	public void parse() {
+	public void parse() throws Exception{
 		env.getInput().get();
 	}
 	

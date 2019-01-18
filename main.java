@@ -9,7 +9,7 @@ import newlang3.*;
 import newlang4.*;
 
 public class main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		// TODO 自動生成されたメソッド・スタブ
 		
 		String fname = "./src/test1.bas";
