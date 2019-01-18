@@ -12,7 +12,7 @@ public class main {
 	public static void main(String[] args) throws Exception{
 		// TODO 自動生成されたメソッド・スタブ
 		
-		String fname = "./src/test1.bas";
+		String fname = "test1.bas";
 		if(args.length > 0) {
 			fname = args[0];
 		}
