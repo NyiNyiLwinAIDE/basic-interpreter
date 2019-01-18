@@ -5,8 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
-import newlang3;
-import newlang4;
+import newlang3.*;
+import newlang4.*;
 
 public class main {
 	public static void main(String[] args) {
