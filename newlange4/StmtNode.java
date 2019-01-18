@@ -7,46 +7,42 @@ import java.util.HashSet;
 import java.util.Arrays;
 import newlang3.*;
 
-public class StmtListNode extends Node {
-	List<Node> list = new ArrayList<>();
-	
+public class StmtNode extends Node {
+
 	// first集合
 	private final static Set<LexicalType> FIRST = new HashSet<>(Arrays.asList(
-			LexicalType.IF,
-			LexicalType.WHILE,
-			LexicalType.DO,
 			LexicalType.NAME,
 			LexicalType.FOR,
-			LexicalType.END,
-			LexicalType.NL
+			LexicalType.END
 		));	
 	public static boolean isMatch(LexicalType type) {
 		return FIRST.contains(type);
 	}
 	
-	private StmtListNode(Environment env) {
+	private StmtNode(Environment env) {
 		super.env = env;
-		type = NodeType.STMT_LIST;
+		type = NodeType.STMT;
 	}
+	
 	// 次に出てくる字句をparseできるnodeをひとつ返す
 	public static Node getHandler(Environment env) {
-		return new StmtListNode(env);
+		switch (env.getInput().peek(1).getType()) {
+			case NAME:
+				
+			case FOR:
+				
+			case END:
+				return EndNode.getHandler(env);
+			default:
+				throw new Exception("StmtNodeのgetHandlerのError");
+		}
 	}
 	
 	public void parse() {
-		LexicalUnit lu = env.getInput().peek(1).getType();
-		Node handler = null;
-		
-		// stmtがfirst集合に含まれるとき
-		if(StmtNode.isMatch(lu.getType())) {
-			handler = StmtNode.getHandler(env);
-		}
-		handler.parse();
-		list.add(handler);
-		
 	}
 	
 	public String toString() {
-		return list.toString();
+		return "stmt";
 	}
+
 }
