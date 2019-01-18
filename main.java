@@ -1,5 +1,3 @@
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import newlang3;
+import newlang4;
 
 public class main {
 	public static void main(String[] args) {
@@ -26,18 +26,9 @@ public class main {
 		}
 		
 		LexicalAnalyzerimple lai = new LexicalAnalyzerimple(is);
-
-		while(true) {
-			try {
-				LexicalUnit lu = lai.get();
-				System.out.println(lu.toString());
-				if(lu.getType() == LexicalType.EOF) {
-					break;
-				}
-			} catch (Exception e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}
-		}
+		Environment env = new LexicalAnalyzer(my_input);
+		Node program = Program.getHandler(env);
+		program.parse();
+		System.out.println(program.toString());
 	}
 }
