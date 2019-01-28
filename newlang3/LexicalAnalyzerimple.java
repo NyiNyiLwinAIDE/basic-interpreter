@@ -206,6 +206,7 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 	}
 	
 	// カーソルを進めないでn個先の字句を読めるpeekを作った
+	// 変数は一字以降をみる
 	public LexicalUnit peek(int n) throws Exception{
 		List<LexicalUnit> tmp = new ArrayList<>();
 		for(int i=0; i < n-1; i++) {

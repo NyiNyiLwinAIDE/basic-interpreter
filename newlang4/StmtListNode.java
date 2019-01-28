@@ -43,7 +43,6 @@ public class StmtListNode extends Node {
 		}
 		handler.parse();
 		list.add(handler);
-		
 	}
 	
 	public String toString() {

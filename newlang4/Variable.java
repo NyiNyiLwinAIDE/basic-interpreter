@@ -1,5 +1,7 @@
 package newlang4;
 
+import newlang3.*;;
+
 public class Variable extends Node {
 	   String var_name;
 	    Value v;
