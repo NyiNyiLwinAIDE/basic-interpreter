@@ -25,17 +25,20 @@ public class ConstNode extends Node {
 		super.env = env;
 		System.out.println(env.getInput().peek(1).getType());
 		switch (env.getInput().peek(1).getType()) {
-		case INTVAL:
-			type = NodeType.INT_CONSTANT;
-			break;
-		case DOUBLEVAL:
-			type = NodeType.DOUBLE_CONSTANT;
-			break;
-		case LITERAL:
-			type = NodeType.STRING_CONSTANT;
-			break;
-		default:
-			throw new Exception("ConstNodeのgetHandlerのError");
+			case NAME:
+				type = NodeType.STRING_CONSTANT;
+				break;
+			case INTVAL:
+				type = NodeType.INT_CONSTANT;
+				break;
+			case DOUBLEVAL:
+				type = NodeType.DOUBLE_CONSTANT;
+				break;
+			case LITERAL:
+				type = NodeType.STRING_CONSTANT;
+				break;
+			default:
+				throw new Exception("ConstNodeのgetHandlerのError");
 		}
 	}
 
