@@ -40,7 +40,7 @@ public class StmtListNode extends Node {
 		while(true) {
 			while (lu.getType() == LexicalType.NL && StmtListNode.isMatch(env.getInput().peek(2).getType())) {
 				env.getInput().get();
-
+			}{
 				// stmtがfirst集合に含まれるとき
 				if (StmtNode.isMatch(lu.getType())) {
 					handler = StmtNode.getHandler(env);
