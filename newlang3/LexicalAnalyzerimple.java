@@ -79,7 +79,7 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 			return new LexicalUnit(LexicalType.EOF);
 		}
 		char c = (char) ci;
-		while(c == ' ' || c == '\t') {
+		while(c == ' ' || c == '\t' || c == '\r') {
 			ci = reader.read();
 			c = (char) ci;
 		}
