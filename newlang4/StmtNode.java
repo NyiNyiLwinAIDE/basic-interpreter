@@ -28,9 +28,15 @@ public class StmtNode extends Node {
 	public static Node getHandler(Environment env) throws Exception {
 		switch (env.getInput().peek(1).getType()) {
 			case NAME:
-				
+				if(env.getInput().peek(2).getType() == LexicalType.EQ){
+					return SubstNode.getHandler(env);
+				}else if(ExprListNode.isMatch(env.getInput().peek(2).getType())) {
+					return CallSubNode.getHandler(env);
+				}else{
+					throw new Exception("StmtNodeのgetHandlerのエラー");
+				}
 			case FOR:
-				
+				return ForNode.getHandler(env);
 			case END:
 				return EndNode.getHandler(env);
 			default:
