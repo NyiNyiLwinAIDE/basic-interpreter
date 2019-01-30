@@ -35,7 +35,6 @@ public class SubstNode extends Node {
 			throw new Exception("SubstNodeのNAMElのparseエラー");
 		}
 		if(env.getInput().get().getType() != LexicalType.EQ) throw new Exception("SubstNodeのEQのparseエラー");
-		System.out.println(env.getInput().peek(1).getType());
 		if(ExprNode.isMatch(env.getInput().peek(1).getType())) {
 			expr = ExprNode.getHandler(env);
 			expr.parse();

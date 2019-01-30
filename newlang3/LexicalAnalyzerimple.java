@@ -183,6 +183,8 @@ public class LexicalAnalyzerimple implements LexicalAnalyzer {
 				s += (char)ci;
 			}else if((char)ci == '<') {
 				s += (char)ci;
+			}else{
+				reader.unread(ci);
 			}
 		}
 		

@@ -30,7 +30,7 @@ public class Main4 {
 		LexicalAnalyzer la = new LexicalAnalyzerimple(is);
 
 
-//		for(int i=0; i<30; i++){
+//		for(int i=0; i<50; i++){
 //			System.out.println(la.get());
 //		}
 

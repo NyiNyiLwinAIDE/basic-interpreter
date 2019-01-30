@@ -26,6 +26,7 @@ public class StmtNode extends Node {
 	
 	// 次に出てくる字句をparseできるnodeをひとつ返す
 	public static Node getHandler(Environment env) throws Exception {
+		System.out.println(env.getInput().peek(1).getType());
 		switch (env.getInput().peek(1).getType()) {
 			case NAME:
 				if(env.getInput().peek(2).getType() == LexicalType.EQ){
