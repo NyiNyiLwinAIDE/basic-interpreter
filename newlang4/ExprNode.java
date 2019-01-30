@@ -31,6 +31,7 @@ public class ExprNode extends Node{
     }
 
     public void parse() throws Exception{
+    	//	ここでは単項式のみ
     	LexicalUnit lu = env.getInput().peek(1);
     	Node handler = null;
     	

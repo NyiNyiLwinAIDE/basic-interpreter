@@ -37,25 +37,81 @@ public class IfBlockNode extends Node {
 		if(env.getInput().get().getType() != LexicalType.IF) {
 			throw new Exception("IFじゃないよ");
 		}
-		
-		if(CondNode.isMatdh(env.getInput().peek(1).getType())) {
+
+		if(CondNode.isMatch(env.getInput().peek(1).getType())) {
 			Node handler = null;
 			handler = CondNode.getHandler(env);
 			handler.parse();
 			cond.add(handler);
 		}
-		
+
 		if(env.getInput().get().getType() != LexicalType.THEN) {
 			throw new Exception("THENじゃないよ");
 		}
-		
+
 		if(env.getInput().get().getType() != LexicalType.NL) {
 			throw new Exception("NLじゃないよ");
 		}
-		
+		if(StmtListNode.isMatch(env.getInput().peek(1).getType())) {
+			Node handler = null;
+			handler = StmtListNode.getHandler(env);
+			handler.parse();
+			trueprocess.add(handler);
+		}
+		while (env.getInput().peek(1).getType() == LexicalType.ELSEIF) {
+			env.getInput().get();
+			
+			if(CondNode.isMatch(env.getInput().peek(1).getType())) {
+				Node handler = null;
+				handler = CondNode.getHandler(env);
+				handler.parse();
+				cond.add(handler);
+			}
+
+			if(env.getInput().get().getType() != LexicalType.THEN) {
+				throw new Exception("THENじゃないよ");
+			}
+
+			if(env.getInput().get().getType() != LexicalType.NL) {
+				throw new Exception("NLじゃないよ");
+			}
+			if(StmtListNode.isMatch(env.getInput().peek(1).getType())) {
+				Node handler = null;
+				handler = StmtListNode.getHandler(env);
+				handler.parse();
+				trueprocess.add(handler);
+			}
+		}
+		if (env.getInput().peek(1).getType() == LexicalType.ELSE) {
+			env.getInput().get();
+
+
+			if(env.getInput().get().getType() != LexicalType.NL) {
+				throw new Exception("NLじゃないよ");
+			}
+			if(StmtListNode.isMatch(env.getInput().peek(1).getType())) {
+				Node handler = null;
+				handler = StmtListNode.getHandler(env);
+				handler.parse();
+				elseprocess = handler;
+			}
+		}
+		if(env.getInput().get().getType() != LexicalType.ENDIF) {
+			throw new Exception("ENDIFじゃないよ");
+		}
+		if(env.getInput().get().getType() != LexicalType.NL) {
+			throw new Exception("NLじゃないよ");
+		}
 	}
 
 	public String toString() {
-		return "block";
+		String str = "";
+		str += String.format("IF THEN" + cond, trueprocess);
+		
+		if(elseprocess != null) {
+			str += String.format("ELSE" + elseprocess);
+		}
+		return str;
+		
 	}
 }

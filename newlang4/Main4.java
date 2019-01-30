@@ -14,7 +14,7 @@ public class Main4 {
 	public static void main(String[] args) throws Exception{
 		// TODO 自動生成されたメソッド・スタブ
 		
-		String fname = "./src/test2.bas";
+		String fname = "./src/FizzBuzz.bas";
 		if(args.length > 0) {
 			fname = args[0];
 		}
@@ -32,5 +32,6 @@ public class Main4 {
 		Node program = ProgramNode.getHandler(env);
 		program.parse();
 		System.out.println(program.toString());
+		System.out.println(fname);
 	}
 }

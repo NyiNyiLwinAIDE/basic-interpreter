@@ -40,6 +40,8 @@ public class StmtListNode extends Node {
 		// stmtがfirst集合に含まれるとき
 		if(StmtNode.isMatch(lu.getType())) {
 			handler = StmtNode.getHandler(env);
+		} else if(BlockNode.isMatch(lu.getType())) {
+			handler = BlockNode.getHandler(env);
 		}
 		handler.parse();
 		list.add(handler);
