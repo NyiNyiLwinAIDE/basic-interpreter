@@ -31,11 +31,8 @@ public class ForNode extends Node {
 	}
 	
 	public void parse() throws Exception {
-		if(env.getInput().get().getType() == LexicalType.FOR) {
-			env.getInput().get();
-		} else {
-			throw new Exception("ForNodeのforのparse部分がおかしいエラー");
-		}
+		if(env.getInput().get().getType() != LexicalType.FOR) throw new Exception("ForNodeのforのparse部分がおかしいエラー");
+
 		if(SubstNode.isMatch(env.getInput().peek(1).getType())) {
 			init = SubstNode.getHandler(env);
 			init.parse();

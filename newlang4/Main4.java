@@ -30,9 +30,9 @@ public class Main4 {
 		LexicalAnalyzer la = new LexicalAnalyzerimple(is);
 
 
-		for(int i=0; i<30; i++){
-			System.out.println(la.get());
-		}
+//		for(int i=0; i<30; i++){
+//			System.out.println(la.get());
+//		}
 
 		Environment env = new Environment(la);
 		Node program = ProgramNode.getHandler(env);

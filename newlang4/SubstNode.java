@@ -29,16 +29,13 @@ public class SubstNode extends Node {
 	}
 	
 	public void parse() throws Exception {
-		if(env.getInput().get().getType() == LexicalType.NAME){
+		if(env.getInput().peek(1).getType() == LexicalType.NAME){
 			 leftVar= env.getInput().get().getValue().getSValue();
 		} else {
 			throw new Exception("SubstNodeのNAMElのparseエラー");
 		}
-		if(env.getInput().get().getType() == LexicalType.EQ) {
-			env.getInput().get();
-		} else {
-			throw new Exception("SubstNodeのEQのparseエラー");
-		}
+		if(env.getInput().get().getType() != LexicalType.EQ) throw new Exception("SubstNodeのEQのparseエラー");
+		System.out.println(env.getInput().peek(1).getType());
 		if(ExprNode.isMatch(env.getInput().peek(1).getType())) {
 			expr = ExprNode.getHandler(env);
 			expr.parse();

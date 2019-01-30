@@ -36,15 +36,24 @@ public class StmtListNode extends Node {
 	public void parse() throws Exception{
 		LexicalUnit lu = env.getInput().peek(1);
 		Node handler = null;
-		
-		// stmtがfirst集合に含まれるとき
-		if(StmtNode.isMatch(lu.getType())) {
-			handler = StmtNode.getHandler(env);
-		} else if(BlockNode.isMatch(lu.getType())) {
-			handler = BlockNode.getHandler(env);
+
+		while(true) {
+			while (lu.getType() == LexicalType.NL && StmtListNode.isMatch(env.getInput().peek(2).getType())) {
+				env.getInput().get();
+
+				// stmtがfirst集合に含まれるとき
+				if (StmtNode.isMatch(lu.getType())) {
+					handler = StmtNode.getHandler(env);
+				} else if (BlockNode.isMatch(lu.getType())) {
+					handler = BlockNode.getHandler(env);
+				} else {
+					return;
+				}
+				handler.parse();
+				list.add(handler);
+			}
 		}
-		handler.parse();
-		list.add(handler);
+
 	}
 	
 	public String toString() {

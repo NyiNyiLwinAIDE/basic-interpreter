@@ -24,14 +24,15 @@ public class ConstNode extends Node {
 	private ConstNode(Environment env) throws Exception {
 		super.env = env;
 		switch (env.getInput().peek(1).getType()) {
-		case NAME:
-
 		case INTVAL:
 			type = NodeType.INT_CONSTANT;
+			break;
 		case DOUBLEVAL:
 			type = NodeType.DOUBLE_CONSTANT;
+			break;
 		case LITERAL:
 			type = NodeType.STRING_CONSTANT;
+			break;
 		default:
 			throw new Exception("ConstNodeのgetHandlerのError");
 		}
