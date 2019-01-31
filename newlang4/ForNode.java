@@ -76,7 +76,7 @@ public void parse() throws Exception {
 
 public String toString() {
 	String str = "";
-	str += String.format("FOR MAX STMTLIST STEP" + init, max, symbol, step);
+	str += "FOR" + init + "MAX" + max +  "STMTLIST" + symbol + "STEP" + step;
 	return str;
 }
 

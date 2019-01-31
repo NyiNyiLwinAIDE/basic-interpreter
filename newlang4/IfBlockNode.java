@@ -105,10 +105,10 @@ public void parse() throws Exception {
 
 public String toString() {
 	String str = "";
-	str += String.format("IF THEN" + cond, trueprocess);
+	str += "IF THEN" + cond + trueprocess;
 
 	if(elseprocess != null) {
-		str += String.format("ELSE" + elseprocess);
+		str += "ELSE" + elseprocess;
 	}
 	return str;
 

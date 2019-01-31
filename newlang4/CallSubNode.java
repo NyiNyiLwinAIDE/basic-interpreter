@@ -41,6 +41,6 @@ public class CallSubNode extends Node {
 	}
 	
 	public String toString() {
-		return "FUNCTION" + name + arguments;
+		return "FUNC" + name + "ARGUMENTS_LIST" + arguments;
 	}
 }
