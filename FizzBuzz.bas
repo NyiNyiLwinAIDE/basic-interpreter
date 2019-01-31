@@ -24,10 +24,6 @@ FOR a = 1 TO 40
         PRINT "Buzz"
         flg5=0
         flg=1
-    ELSEIF
-        PRINT "Buzz"
-        flg5=0
-        flg=1
     ENDIF
 
     IF flg=0 THEN

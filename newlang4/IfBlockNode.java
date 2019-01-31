@@ -98,6 +98,7 @@ public void parse() throws Exception {
 		}
 		if(env.getInput().get().getType() != LexicalType.NL) throw new Exception("NLじゃないよ");
 	}
+	System.out.println(env.getInput().get().getType());
 	if(env.getInput().get().getType() != LexicalType.ENDIF) throw new Exception("ENDIFじゃないよ");
 	if(env.getInput().get().getType() != LexicalType.NL) throw new Exception("NLじゃないよ");
 

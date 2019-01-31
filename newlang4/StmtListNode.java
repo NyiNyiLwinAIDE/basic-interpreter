@@ -49,7 +49,7 @@ public class StmtListNode extends Node {
 				} else {
 					return;
 				}
-				handler.parse();
+ 				handler.parse();
 				list.add(handler);
 			}
 
