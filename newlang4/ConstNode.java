@@ -23,6 +23,7 @@ public class ConstNode extends Node {
 
 	private ConstNode(Environment env) throws Exception {
 		super.env = env;
+		System.out.println(env.getInput().peek(1).getType());
 		switch (env.getInput().peek(1).getType()) {
 			case NAME:
 				type = NodeType.STRING_CONSTANT;
@@ -50,7 +51,19 @@ public class ConstNode extends Node {
 	}
 
 	public String toString() {
-		return value.toString();
+		String str = "CONST:";
+		switch (type) {
+			case INT_CONSTANT:
+				str += value.getIValue();
+				break;
+			case DOUBLE_CONSTANT:
+				str += value.getDValue();
+				break;
+			case STRING_CONSTANT:
+				str += value.getSValue();
+				break;
+		}
+		return str;
 	}
 
 }

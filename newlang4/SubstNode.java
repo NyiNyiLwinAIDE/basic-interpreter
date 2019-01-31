@@ -45,7 +45,7 @@ public class SubstNode extends Node {
 	} 
 	
 	public String toString() {
-		return String.format(leftVar, expr);
+		return "SUBST:" + expr.toString() + "=" + leftVar;
 	}
 
 }

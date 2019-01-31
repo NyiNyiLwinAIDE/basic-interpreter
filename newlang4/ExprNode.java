@@ -43,6 +43,11 @@ public class ExprNode extends Node{
     }
 
     public String toString() {
-        return hoge.toString();
+        String str = "EXPR:";
+        if(hoge != null){
+            str += hoge;
+        }
+        return str;
+
     }
 }
