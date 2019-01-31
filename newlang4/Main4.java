@@ -33,5 +33,6 @@ public class Main4 {
 		Node program = ProgramNode.getHandler(env);
 		program.parse();
 		System.out.println(program.toString());
+		// あああああ
 	}
 }
