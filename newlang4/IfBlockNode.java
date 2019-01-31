@@ -96,12 +96,9 @@ public class IfBlockNode extends Node {
 				elseprocess = handler;
 			}
 		}
-		if(env.getInput().get().getType() != LexicalType.ENDIF) {
-			throw new Exception("ENDIFじゃないよ");
-		}
-		if(env.getInput().get().getType() != LexicalType.NL) {
-			throw new Exception("NLじゃないよ");
-		}
+		if(env.getInput().get().getType() != LexicalType.ENDIF) throw new Exception("ENDIFじゃないよ");
+		if(env.getInput().get().getType() != LexicalType.NL) throw new Exception("NLじゃないよ");
+
 	}
 
 	public String toString() {

@@ -61,6 +61,7 @@ public class ForNode extends Node {
 		} else {
 			throw new Exception("ForNodeのstmt_listの部分がおかしいエラー");
 		}
+		System.out.println(env.getInput().peek(1).getType());
 		if(env.getInput().peek(1).getType() == LexicalType.NEXT) {
 			env.getInput().get();
 		} else {
