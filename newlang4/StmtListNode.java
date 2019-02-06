@@ -52,11 +52,16 @@ public class StmtListNode extends Node {
  				handler.parse();
 				list.add(handler);
 			}
-
-
 	}
 	
 	public String toString() {
 		return list.toString();
 	}
+
+	public Value getValue() throws Exception{
+	    for(Node node : list){
+	        node.getValue();
+        }
+        return null;
+    }
 }

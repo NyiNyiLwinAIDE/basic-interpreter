@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import newlang3.LexicalType;
+import newlang3.*;
 
 public class SubstNode extends Node {
 	String leftVar;
@@ -46,6 +46,11 @@ public class SubstNode extends Node {
 	
 	public String toString() {
 		return "SUBST:" + expr.toString() + "=" + leftVar;
+	}
+
+	public Value getValue() throws Exception{
+		env.getVariable(leftVar).setValue(expr.getValue());
+		return null;
 	}
 
 }

@@ -2,27 +2,27 @@ package newlang4;
 
 import newlang3.*;;
 
-public class Variable extends Node {
+public class VariableNode extends Node {
 	   String var_name;
 	    Value v;
 	    
 	    /** Creates a new instance of variable */
-	    public Variable(String name) {
+	    public VariableNode(String name) {
 	        var_name = name;
 	    }
-	    public Variable(LexicalUnit u) {
+	    public VariableNode(LexicalUnit u) {
 	        var_name = u.getValue().getSValue();
 	    }
 	    
 	    public static Node isMatch(Environment my_env, LexicalUnit first) {
 	        if (first.getType() == LexicalType.NAME) {
-	            Variable v;
+	            VariableNode v;
 /*
 	            String s = first.getValue().getSValue();
 	            v = my_env.getVariable(s);
 	            return v;
 */
-	            return new Variable(first.getValue().getSValue());
+	            return new VariableNode(first.getValue().getSValue());
 	        }
 	        return null;
 	    }
