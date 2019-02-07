@@ -84,7 +84,7 @@ public class ForNode extends Node {
 
     public Value getValue() throws Exception {
         init.getValue();
-        
+
 
         while (true) {
             if (env.getVariable(step).getValue().getIValue() > max.getValue().getIValue()) {

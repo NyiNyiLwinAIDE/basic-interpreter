@@ -13,7 +13,8 @@ public class ValueImple implements Value {
 		this.type = targetType;
 		switch(targetType) {
 			case INTEGER:
-				ivalue = Integer.parseInt(src);
+				dvalue = Double.parseDouble(src);
+				ivalue = (int) dvalue;
 				break;
 			case DOUBLE:
 				dvalue = Double.parseDouble(src);
@@ -21,11 +22,14 @@ public class ValueImple implements Value {
 			case STRING:
 				svalue = src;
 				break;
-			case BOOL:
-				bvalue = Boolean.parseBoolean(src);
-				break;
 		}
 	}
+
+	public ValueImple(boolean b){
+		bvalue = b;
+		this.type = ValueType.BOOL;
+	}
+
 	@Override
 	public String getSValue() {
 		// TODO 自動生成されたメソッド・スタブ

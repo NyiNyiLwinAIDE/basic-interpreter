@@ -1,20 +1,17 @@
 package newlang4;
 
+import newlang3.LexicalAnalyzer;
+import newlang3.LexicalAnalyzerimple;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 
-import newlang3.*;
-import newlang4.*;
-
-public class Main4 {
+public class Main5 {
     public static void main(String[] args) throws Exception {
         // TODO 自動生成されたメソッド・スタブ
-        // 構文解析の実行
+        // インタプリタの実行
 
         String fname = "./src/FizzBuzz.bas";
         if (args.length > 0) {
@@ -34,6 +31,6 @@ public class Main4 {
         Environment env = new Environment(la);
         Node program = ProgramNode.getHandler(env);
         program.parse();
-        System.out.println(program.toString());
+        System.out.println(program.getValue());
     }
 }
