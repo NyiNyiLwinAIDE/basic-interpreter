@@ -84,14 +84,14 @@ public class ForNode extends Node {
 
     public Value getValue() throws Exception {
         init.getValue();
-        int i = env.getVariable(step).getValue().getIValue() + 1;
-
+        
 
         while (true) {
             if (env.getVariable(step).getValue().getIValue() > max.getValue().getIValue()) {
                 break;
             }
             symbol.getValue();
+            int i = env.getVariable(step).getValue().getIValue() + 1;
             env.getVariable(step).setValue(new ValueImple("" + i, ValueType.INTEGER));
         }
         return null;
