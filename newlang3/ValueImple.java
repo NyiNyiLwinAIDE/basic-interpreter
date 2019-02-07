@@ -22,6 +22,8 @@ public class ValueImple implements Value {
 				svalue = src;
 				break;
 			case BOOL:
+				bvalue = Boolean.parseBoolean(src);
+				break;
 		}
 	}
 	@Override
@@ -45,7 +47,7 @@ public class ValueImple implements Value {
 	@Override
 	public boolean getBValue() {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return bvalue;
 	}
 
 	@Override

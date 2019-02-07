@@ -12,6 +12,7 @@ public class ForNode extends Node {
     Node max;
     Node symbol;
     String step;
+    LexicalUnit lu;
 
     private final static Set<LexicalType> FIRST = new HashSet<>(Arrays.asList(
             LexicalType.FOR
@@ -83,13 +84,15 @@ public class ForNode extends Node {
 
     public Value getValue() throws Exception {
         init.getValue();
+        int i = env.getVariable(step).getValue().getIValue() + 1;
+
 
         while (true) {
             if (env.getVariable(step).getValue().getIValue() > max.getValue().getIValue()) {
                 break;
             }
             symbol.getValue();
-            env.getVariable(step).setValue(new ValueImple("1", ValueType.INTEGER));
+            env.getVariable(step).setValue(new ValueImple("" + i, ValueType.INTEGER));
         }
         return null;
     }

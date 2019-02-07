@@ -4,7 +4,7 @@ FOR a = 1 TO 40
     flg=0
     IF flg3=0 THEN
         flg3=1
-    ELSEIF flg=1 THEN
+    ELSEIF flg3=1 THEN
         flg3=2
     ELSE
         PRINT "Fizz"
@@ -13,7 +13,7 @@ FOR a = 1 TO 40
     ENDIF
 
     IF flg5=0 THEN
-        flg=1
+        flg5=1
     ELSEIF flg5=1 THEN
         flg5=2
     ELSEIF flg5=2 THEN

@@ -77,10 +77,10 @@ public class CondNode extends Node {
                 result = leftval == rightval;
                 break;
             case GT:
-                result = leftval < rightval;
+                result = leftval > rightval;
                 break;
             case LT:
-                result = leftval > rightval;
+                result = leftval < rightval;
                 break;
             case GE:
                 result = leftval <= rightval;
