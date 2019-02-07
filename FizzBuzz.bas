@@ -30,7 +30,7 @@ FOR a = 1 TO 40
         PRINT a
     ENDIF
 
-    PRINT "\n"
+    PRINT "-"
 
 NEXT a
 END

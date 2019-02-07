@@ -22,12 +22,10 @@ public class ValueImple implements Value {
 			case STRING:
 				svalue = src;
 				break;
+			case BOOL:
+				bvalue = Boolean.valueOf(src);
+				break;
 		}
-	}
-
-	public ValueImple(boolean b){
-		bvalue = b;
-		this.type = ValueType.BOOL;
 	}
 
 	@Override
