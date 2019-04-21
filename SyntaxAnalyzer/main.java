@@ -1,14 +1,14 @@
-package newlang4;
+package SyntaxAnalyzer;
 
-import newlang3.LexicalAnalyzer;
-import newlang3.LexicalAnalyzerimple;
+import LexicalAnalyzer.LexicalAnalyzer;
+import LexicalAnalyzer.LexicalAnalyzerimple;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class Main5 {
+public class main {
     public static void main(String[] args) throws Exception {
         // TODO 自動生成されたメソッド・スタブ
         // インタプリタの実行

@@ -1,18 +1,17 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class ForNode extends Node {
     Node init;
     Node max;
     Node symbol;
     String step;
-    LexicalUnit lu;
 
     private final static Set<LexicalType> FIRST = new HashSet<>(Arrays.asList(
             LexicalType.FOR

@@ -1,9 +1,9 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Arrays;
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class ProgramNode extends Node {
 	private final static Set<LexicalType> FIRST = new HashSet<>(Arrays.asList(

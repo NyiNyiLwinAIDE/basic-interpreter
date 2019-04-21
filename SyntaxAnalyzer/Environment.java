@@ -1,9 +1,8 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class Environment {
     LexicalAnalyzer input;

@@ -1,4 +1,4 @@
-package newlang3;
+package LexicalAnalyzer;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

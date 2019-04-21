@@ -1,4 +1,4 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,8 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import newlang3.*;
-import newlang3.LexicalUnit;
+import LexicalAnalyzer.*;
 
 public class ExprListNode extends Node {
     List<Node> list = new ArrayList<>();

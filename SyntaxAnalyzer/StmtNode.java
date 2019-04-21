@@ -1,11 +1,9 @@
-package newlang4;
+package SyntaxAnalyzer;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Arrays;
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class StmtNode extends Node {
 

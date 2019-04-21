@@ -1,4 +1,4 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 public enum NodeType {
 	PROGRAM,

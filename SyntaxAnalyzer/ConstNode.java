@@ -1,10 +1,10 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class ConstNode extends Node {
     Value value = null;

@@ -1,6 +1,6 @@
-package newlang4;
+package SyntaxAnalyzer;
 
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 /**
  *

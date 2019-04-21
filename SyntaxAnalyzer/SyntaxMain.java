@@ -1,17 +1,13 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 
-import newlang3.*;
-import newlang4.*;
+import LexicalAnalyzer.*;
 
-public class Main4 {
+public class SyntaxMain {
     public static void main(String[] args) throws Exception {
         // TODO 自動生成されたメソッド・スタブ
         // 構文解析の実行

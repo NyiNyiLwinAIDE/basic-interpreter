@@ -1,4 +1,4 @@
-package newlang4;
+package SyntaxAnalyzer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 import java.util.List;
 
-import newlang3.*;
+import LexicalAnalyzer.*;
 
 public class IfBlockNode extends Node {
     List<Node> cond = new ArrayList<>();

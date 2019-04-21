@@ -1,4 +1,4 @@
-package newlang3;
+package LexicalAnalyzer;
 
 public enum ValueType {
 	VOID,
